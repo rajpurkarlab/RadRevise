@@ -8,10 +8,11 @@ from datetime import datetime
 from Instructions import Instructions
 from utils import *
 
-def main(start_idx=300, end_idx=400, save_every=100, seed=0):
+def generate_data(start_idx=300, end_idx=400, save_every=100, seed=0):
 
     random.seed(seed)
 
+    # set weights for types of instructions
     inst_type_weights = {
         InstType.ADD_OBS: 8,
         InstType.RM_OBS: 3,
@@ -28,6 +29,7 @@ def main(start_idx=300, end_idx=400, save_every=100, seed=0):
         InstType.CHG_COMPS_TO_PRIOR: 1
     }
 
+    # set weights for edit locations
     location_weights = {
         Location.REPORT: 4,
         Location.SECTION: 2,
@@ -39,24 +41,8 @@ def main(start_idx=300, end_idx=400, save_every=100, seed=0):
     }
 
     inst_maker = Instructions(inst_type_weights=inst_type_weights, location_weights=location_weights)    
-    all_inst = inst_maker.get_all_inst()
-    res = {
-        'inst_type': [],
-        'location': [],
-        'topic': []
-    }
 
-    for inst_type in all_inst.keys():
-        locations = all_inst[inst_type]
-        for location in locations.keys():
-            topics = locations[location]
-            for topic in topics:
-                res['inst_type'].append(inst_type.value)
-                res['location'].append(location.value)
-                res['topic'].append(topic.value)
-    res = pd.DataFrame(res)
-    res.to_csv('../output/all_inst.csv', index=False)
-
+    # MIMIC-CXR test set reports, after preprocessing
     with open('../data/test.json', 'r') as json_file:
         reports = json.load(json_file)
 
@@ -95,4 +81,4 @@ def main(start_idx=300, end_idx=400, save_every=100, seed=0):
             data = []
 
 if __name__=='__main__':
-    main()
+    generate_data()
