@@ -1,7 +1,7 @@
 # RadRevise: A Benchmark Dataset for Instruction-Based Radiology Report Editing
-
-<img src="figures/radrevise.png" width="700"/>
-
+<p align="center">
+    <img src="figures/radrevise.png" width="700"/>
+</p>
 Repository referenced in the paper with the same title, providing code for generating the dataset and using the dataset to benchmark existing models. 
 
 ## Table of Contents
@@ -33,7 +33,7 @@ The code can be used directly to evaluate any text-generation models hosted on [
 python eval_model $MODEL_ID [$DATA_PATH] [$BATCH_SIZE] [$OUTPUT_FILE]
 ``` 
 * `$MODEL_ID`: the Hugging Face model id 
-* `DATA_PATH`: path to RadRevise dataset (default: `../data/RadRevise_v0.csv`)
+* `$DATA_PATH`: path to RadRevise dataset (default: `../data/RadRevise_v0.csv`)
 * `$BATCH_SIZE`: the inference batch size (default: 32) 
 * `$OUTPUT_FILE`: the name of the evaluation output (default: `output/result.csv`)
 
