@@ -1,11 +1,11 @@
 import argparse
 import pandas as pd
 from CXRMetric.run_eval import calc_metric
-from inference import run_inference
+from inference import *
 
 def main(args):
     data = pd.read_csv(args.data_path)
-    gt_reports, predicted_reports = run_inference(args.model_id, data, args.batch_size)
+    gt_reports, predicted_reports = postprocess(run_inference(args.model_id, data, args.batch_size))
     calc_metric(gt_reports, predicted_reports, args.out_file, False)
 
 if __name__ == "__main__":
