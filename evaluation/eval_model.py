@@ -13,6 +13,6 @@ if __name__ == "__main__":
     parser.add_argument('model_id', type=str, help="Model ID on HF")
     parser.add_argument('data_path', type=str, default='../data/RadRevise_v0.csv', help="RadRevise dataset")
     parser.add_argument('inference_batch_size', default=32, type=int)
-    parser.add_argument('out_file', type=str, default='../output/result', help="RadRevise dataset")
+    parser.add_argument('out_file', type=str, default='output/result.csv', help="RadRevise dataset")
     args = parser.parse_args()
     main(args)

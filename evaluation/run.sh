@@ -2,7 +2,7 @@
 
 DATA_PATH="../data/RadRevise_v0.csv"
 BATCH_SIZE=32
-OUTPUT_DIR="../output/"
+OUTPUT_DIR="output/"
 
 # List of model_ids
 MODEL_IDS=(

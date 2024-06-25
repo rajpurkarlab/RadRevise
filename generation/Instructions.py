@@ -121,62 +121,6 @@ class Instructions:
         return topic.lower() in impression.lower()
 
 
-    # def get_single_inst(self, report, inst_type=None, location=None, topic=None):
-
-    #     choose_inst_type = not inst_type
-    #     choose_location = not location 
-    #     choose_topic = not topic 
-
-    #     found = False
-    #     tries = 0 
-
-    #     if self.seed:
-    #         random.seed(self.seed)
-
-    #     res = None
-    #     while not found and tries < 100:
-    #         tries += 1
-
-    #         if choose_inst_type:
-    #             inst_type = random.choices(self.inst_types, weights=self.inst_type_weights, k=1)[0]
-
-    #         if choose_location:
-    #             location = random.choices(self.locations, weights=self.location_weights, k=1)[0]
-
-    #             if location == Location.SECTION_FIND and "findings:" not in report.lower():
-    #                 location = Location.SECTION_IMPR
-    #             elif location == Location.SECTION_IMPR and "impression:" not in report.lower():
-    #                 location = Location.SECTION_FIND
-
-    #         if choose_topic:
-    #             topic = random.choices(self.topics, weights = self.topic_weights, k=1)[0]
-
-    #         assert (inst_type in self.inst_types and location in self.locations 
-    #                 and topic in self.topics) 
-
-    #         if (self.inst_list.get(inst_type) and self.inst_list[inst_type].get(location) and
-    #             topic in self.inst_list[inst_type][location]):
-
-    #             if inst_type in {InstType.ADD_OBS} and self.search_report(report, topic.value):
-    #                 pass
-    #             elif inst_type in {InstType.RM_OBS, InstType.CHG_OBS} and not self.search_report(report, topic.value):
-    #                 pass
-    #             else:
-    #                 found = True
-
-    #             if (inst_type in {InstType.RM_COMPS_TO_PRIOR}):
-    #                 res = f"an instruction to {inst_type.value} {location.value}, if any" 
-    #                 found = True
-
-    #     if tries == 100 and not found:
-    #         return None
-
-    #     if not res: 
-    #         res = f"an instruction to {inst_type.value} {location.value} about {topic.value}" 
-    #     return res
-
-
-   
     def get_single_inst(self, report):
 
         if self.seed:
